@@ -21,7 +21,7 @@ logger = logging.getLogger()
 
 def main():
     while True:
-        logger.info("Running main method...")
+        logger.info("Running main method... (and testing caching!)")
         time.sleep(5)
 
 if __name__ == "__main__":
