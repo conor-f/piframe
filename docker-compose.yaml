@@ -45,3 +45,15 @@ services:
       - "traefik.enable=true"
       - "traefik.http.routers.whoami.rule=Host(`piframe`)"
       - "traefik.http.routers.whoami.entrypoints=web"
+
+
+  piframe:
+    image: "conorjf/piframe"
+    container_name: "piframe"
+
+    restart: "unless-stopped"
+
+    # labels:
+      # - "traefik.enable=true"
+      # - "traefik.http.routers.whoami.rule=Host(`piframe`)"
+      # - "traefik.http.routers.whoami.entrypoints=web"
