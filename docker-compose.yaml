@@ -19,6 +19,22 @@ services:
     volumes:
       - "/var/run/docker.sock:/var/run/docker.sock:ro"
 
+
+  piframe-watchtower:
+    container_name: "piframe-watchtower"
+    image: containrrr/watchtower
+
+    restart: unless-stopped
+
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+
+    command: --interval 30
+
+    labels:
+      - "traefik.enable=false"
+
+
   whoami:
     image: "traefik/whoami"
     container_name: "whoami"
