@@ -3,4 +3,4 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /
 
-CMD ["echo 'Hello, world!'"]
+CMD ["/usr/bin/echo", "'Hello, world!'"]
