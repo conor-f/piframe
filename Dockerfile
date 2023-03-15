@@ -3,4 +3,4 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 WORKDIR /
 
-RUN echo "Hello world!"
+RUN echo "Hello world!" && sleep 5
