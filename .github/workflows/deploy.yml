@@ -1,7 +1,7 @@
 name: Deploy
 
-# We want to deploy on all merges to main and any version tags.
-# On main push:
+# We want to deploy on all merges to master and any version tags.
+# On master push:
 #   - Build, tag, and push image as `latest`
 #
 # On tag matching "v*.*.*":
@@ -9,7 +9,7 @@ name: Deploy
 on:
   push:
     branches:
-      - "main"
+      - "master"
 
     tags:
       - "v*.*.*"
