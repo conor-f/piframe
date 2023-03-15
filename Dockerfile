@@ -3,11 +3,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt update -y && apt install -y python3 python3-pip
 
-WORKDIR /
+WORKDIR /app
 
-COPY requirements.txt requirements.txt
-RUN python3 -m pip install -r requirements.txt
+COPY requirements.txt /app/requirements.txt
+RUN python3 -m pip install -r /app/requirements.txt
 
-COPY src src
+COPY src /app/src
 
-CMD ["python3", "src/test.py"]
+CMD ["python3", "/app/src/test.py"]
