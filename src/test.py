@@ -1,4 +1,5 @@
 import logging
+import sys
 import time
 
 log_filename = "/var/log/piframe.log"
