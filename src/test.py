@@ -1,4 +1,5 @@
 import logging
+import requests
 import sys
 import time
 
@@ -32,13 +33,22 @@ options.parallel = 1
 options.hardware_mapping = "adafruit-hat"
 
 
+def pull_image():
+    """
+    Write an image to /tmp/demo_image from picsum.
+    """
+    with open("/tmp/demo_image", "wb") as fh:
+        fh.write(requests.get("https://picsum.photos/64").content)
+
+
 def main():
     matrix = RGBMatrix(options=options)
 
     while True:
         logger.info("Running main method...")
 
-        image_file = "/app/resources/demo_image.png"
+        image_file = "/tmp/demo_image"
+        pull_image()
         image = Image.open(image_file)
 
         # Make image fit our screen.
