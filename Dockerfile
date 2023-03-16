@@ -14,4 +14,4 @@ RUN python3 -m pip install -r /app/requirements.txt
 COPY src /app/src
 
 # CMD ["python3", "/app/src/test.py"]
-CMD ["./examples-api-use/demo", "-D0", "--led-no-hardware-pulse", "--led-gpio-mapping=adafruit-hat", "--led-rows=64", "--led-cols=64"]
+CMD ["./rpi-rgb-led-matrix/examples-api-use/demo", "-D0", "--led-no-hardware-pulse", "--led-gpio-mapping=adafruit-hat", "--led-rows=64", "--led-cols=64"]
