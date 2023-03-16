@@ -10,7 +10,7 @@ RUN apt install -y libgraphicsmagick++-dev libwebp-dev
 # Build the examples and utils from hzeller:
 RUN git clone https://github.com/hzeller/rpi-rgb-led-matrix/
 RUN cd rpi-rgb-led-matrix && make -C examples-api-use
-RUN cd rpi-rgb-led-matrix/utils && make examples-api-use led-image-viewer
+RUN cd rpi-rgb-led-matrix/utils && make led-image-viewer
 
 WORKDIR /app
 
