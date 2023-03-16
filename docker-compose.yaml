@@ -53,6 +53,9 @@ services:
 
     restart: "unless-stopped"
 
+    # Needed for GPIO access.
+    privileged: true
+
     # labels:
       # - "traefik.enable=true"
       # - "traefik.http.routers.whoami.rule=Host(`piframe`)"
