@@ -1,10 +1,12 @@
 import logging
+import os
 import requests
 import sys
 import time
 
 from PIL import Image
 from rgbmatrix import RGBMatrix, RGBMatrixOptions
+from spotibar.client import SpotibarClient
 
 
 log_filename = "/var/log/piframe.log"
@@ -33,12 +35,18 @@ options.parallel = 1
 options.hardware_mapping = "adafruit-hat"
 
 
-def pull_image():
+spotibar_client = SpotibarClient(
+    client_id=os.environ.get("SPOTIBAR_CLIENT_ID"),
+    client_secret=os.environ.get("SPOTIBAR_CLIENT_SECRET"),
+)
+
+
+def pull_image(url="https://picsum.photos/64"):
     """
-    Write an image to /tmp/demo_image from picsum.
+    Write an image to /tmp/demo_image from URL.
     """
     with open("/tmp/demo_image", "wb") as fh:
-        fh.write(requests.get("https://picsum.photos/64").content)
+        fh.write(requests.get(url).content)
 
 
 def main():
@@ -47,15 +55,20 @@ def main():
     while True:
         logger.info("Running main method...")
 
-        image_file = "/tmp/demo_image"
-        pull_image()
-        image = Image.open(image_file)
+        if not spotibar_client.is_live():
+            matrix.Clear()
+        else:
+            album_art_url = spotibar_client.get_current_album_image_url()
+            pull_image(album_art_url)
 
-        # Make image fit our screen.
-        image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
-        matrix.SetImage(image.convert("RGB"))
+            image_file = "/tmp/album_image"
+            image = Image.open(image_file)
 
-        time.sleep(5)
+            # Make image fit our screen.
+            image.thumbnail((matrix.width, matrix.height), Image.ANTIALIAS)
+            matrix.SetImage(image.convert("RGB"))
+
+        time.sleep(10)
 
 if __name__ == "__main__":
     main()

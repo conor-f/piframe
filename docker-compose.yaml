@@ -56,6 +56,10 @@ services:
     # Needed for GPIO access.
     privileged: true
 
+    environment:
+      - SPOTIBAR_CLIENT_ID="your_spotibar_client_id"
+      - SPOTIBAR_CLIENT_SECRET="your_spotibar_client_secret"
+
     # labels:
       # - "traefik.enable=true"
       # - "traefik.http.routers.whoami.rule=Host(`piframe`)"
