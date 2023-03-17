@@ -10,6 +10,8 @@ RUN cd rpi-rgb-led-matrix/bindings/python && make build-python PYTHON=$(command 
 
 WORKDIR /app
 
+RUN mkdir /app/config/
+
 COPY requirements.txt /app/requirements.txt
 RUN python3 -m pip install -r /app/requirements.txt
 
