@@ -59,6 +59,12 @@ services:
     environment:
       - SPOTIBAR_CLIENT_ID="your_spotibar_client_id"
       - SPOTIBAR_CLIENT_SECRET="your_spotibar_client_secret"
+      - SPOTIBAR_CONFIG_FILE="/app/config/spotibar_config.json"
+
+    volumes:
+      - ./config/:/app/config/
+      - ./config/tmp/:/tmp/
+
 
     # labels:
       # - "traefik.enable=true"
