@@ -43,9 +43,9 @@ spotibar_client = SpotibarClient(
 
 def pull_image(url="https://picsum.photos/64"):
     """
-    Write an image to /tmp/demo_image from URL.
+    Write an image to /tmp/album_image from URL.
     """
-    with open("/tmp/demo_image", "wb") as fh:
+    with open("/tmp/album_image", "wb") as fh:
         fh.write(requests.get(url).content)
 
 
