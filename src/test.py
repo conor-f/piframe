@@ -36,9 +36,8 @@ options.hardware_mapping = "adafruit-hat"
 
 
 spotibar_client = SpotibarClient(
-    client_id=os.environ.get("SPOTIBAR_CLIENT_ID"),
-    client_secret=os.environ.get("SPOTIBAR_CLIENT_SECRET"),
     config_file=os.environ.get("SPOTIBAR_CONFIG_FILE"),
+    auth_cache_path=os.environ.get("SPOTIBAR_AUTH_CACHE_FILE"),
 )
 
 
