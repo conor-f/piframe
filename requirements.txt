@@ -1,2 +1,2 @@
 requests
-spotibar>=0.3.7
+spotibar>=0.3.8
