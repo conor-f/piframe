@@ -26,14 +26,18 @@ logging.basicConfig(
 logger = logging.getLogger()
 
 
-# TODO: Put into a config file.
 options = RGBMatrixOptions()
-options.rows = 64
-options.cols = 64
-options.chain_length = 1
-options.parallel = 1
-options.hardware_mapping = "adafruit-hat"
-
+options.rows = os.environ.get("MATRIX_ROWS", 64)
+options.cols = os.environ.get("MATRIX_COLS", 64)
+options.chain_length = os.environ.get("MATRIX_CHAIN_LENGTH", 1)
+options.parallel = os.environ.get("MATRIX_PARALLEL", 1)
+options.hardware_mapping = os.environ.get(
+    "MATRIX_HARDWARE_MAPPING",
+    "adafruit-hat"
+)
+options.pwm_bits = os.environ.get("MATRIX_PWM_BITS", 11)
+options.pwm_lsb_nanoseconds = os.environ.get("MATRIX_PWM_LSB_NANOSECONDS", 130)
+options.brightness = os.environ.get("MATRIX_BRIGHTNESS", 20)
 
 spotibar_client = SpotibarClient(
     config_file=os.environ.get("SPOTIBAR_CONFIG_FILE"),
