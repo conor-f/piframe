@@ -59,6 +59,7 @@ services:
     environment:
       - SPOTIBAR_CONFIG_FILE=/app/config/spotibar_config.json
       - SPOTIBAR_AUTH_CACHE_FILE=/app/config/spotibar_auth_cache
+      - MATRIX_HARDWARE_MAPPING=adafruit-hat-pwm
 
     volumes:
       - ./config/:/app/config/

@@ -20,5 +20,4 @@ RUN mkdir -p /app/resources/ && cd /app/resources && wget https://picsum.photos/
 
 COPY src /app/src
 
-# CMD ["/rpi-rgb-led-matrix/utils/led-image-viewer", "--led-no-hardware-pulse", "--led-gpio-mapping=adafruit-hat-pwm", "--led-rows=64", "--led-cols=64", "-C", "/app/resources/demo_image.png"]
-CMD ["python3", "/app/src/test.py"]
+CMD ["python3", "/app/src/piframe.py"]
